@@ -12,7 +12,6 @@ export class ContactForm extends React.Component {
     const { name, number } = this.state;
     const normalizedName = name.toLowerCase();
     const findedName = this.props.getContactName(normalizedName);
-    console.log(typeof findedName);
     findedName
       ? alert(`${name} is already in contacts.`)
       : this.props.onSubmitForm(name, number);

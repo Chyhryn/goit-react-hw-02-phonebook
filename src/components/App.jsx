@@ -17,12 +17,6 @@ export class App extends React.Component {
     }));
   };
 
-  getContactName = name => {
-    return this.state.contacts.find(
-      contact => contact.name.toLowerCase() === name
-    );
-  };
-
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -30,13 +24,18 @@ export class App extends React.Component {
   getFilteredContacts = () => {
     const { contacts, filter } = this.state;
     const normalizedFilter = filter.toLowerCase();
-
     return contacts.filter(contact => {
       return (
         contact.name.toLowerCase().includes(normalizedFilter) ||
         contact.number.includes(normalizedFilter)
       );
     });
+  };
+
+  getContactName = name => {
+    return this.state.contacts.find(
+      contact => contact.name.toLowerCase() === name
+    );
   };
 
   deleteContact = e => {
